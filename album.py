@@ -1,4 +1,7 @@
+from song import Song
+from typing import List
+
 class Album:
-    def __init__(self, album_name="", songs=None):
-        self.album_name = album_name
+    def __init__(self, name:str = "", songs: List[Song] = None):
+        self.name = name
         self.songs = songs if songs else []

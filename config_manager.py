@@ -28,3 +28,11 @@ class ConfigManager:
             return self.selenium_config["affenknecht"]
         except:
             raise Exception("affenknecht lyrics page address not found")
+
+    def get_output_path(self):
+        try:
+            return self.selenium_config["output_path"]
+        except:
+            raise Exception("output path not found")
+
+    
