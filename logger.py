@@ -16,3 +16,6 @@ class Logger:
         fileHandler.setLevel(level=logging.INFO)
 
         self.logger.addHandler(fileHandler)
+    
+    def write(self, s):
+        self.logger.info(s)
