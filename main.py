@@ -8,7 +8,7 @@ from itertools import zip_longest
 from album import Album
 from song import Song
 from config_manager import ConfigManager
-from logger import Logger
+from logger import Logger, slugify
 
 config = ConfigManager()
 logger = Logger()
@@ -29,7 +29,6 @@ for album_element in album_elements:
     if title_elements:
         album_title = title_elements[0].text
         current_album = Album(album_name=album_title)
-        print("{}".format(album_title))
         logger.write("{}".format(album_title))
         song_elements = album_element.find_elements(By.XPATH, value='(p/br/following-sibling::a[1])|(p/a[1])')
         for i, song_element in enumerate(song_elements, 1):
@@ -54,10 +53,11 @@ for album_element in album_elements:
             current_song = Song(name=german_name, name_translated=english_name, url=song_lyric_page_url)
             current_album.songs.append(current_song)
             
-            print("{:<2} - {:<18} - {:<18} - {}".format(i, current_song.name, current_song.name_translated, current_song.url))
             logger.write("{:<2} - {:<18} - {:<18} - {}".format(i, current_song.name, current_song.name_translated, current_song.url))
             
         albums.append(current_album)
-        print("-" * 100)
         logger.write("-" * 100)
+
+logger.write("Fetching song links finished")
+
 
