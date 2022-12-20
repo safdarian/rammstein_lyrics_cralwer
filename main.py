@@ -18,7 +18,7 @@ s = Service(config.get_selenium_webdriver_path())
 url = config.get_affenknecht_lyrics_page()
 
 options = Options()
-# options.headless = True
+options.headless = True
 
 driver = webdriver.Chrome(service=s, options=options)
 driver.get(url)
